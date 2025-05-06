@@ -61,6 +61,11 @@ export const getNewsDetail = async (
     endpoint: "news",
     contentId,
     queries,
+    customRequestInit: {
+      next: {
+        revalidate: queries?.draftkey === undefined ? 60 : 0,
+      },
+    },
   });
   return detailData;
 };
